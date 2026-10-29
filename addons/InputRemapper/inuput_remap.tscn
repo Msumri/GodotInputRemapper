@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://k5hv1cqpwwyh"]
+
+[ext_resource type="Script" uid="uid://djrog7b7vkcqs" path="res://addons/InputRemapper/input_mapping.gd" id="1_2pf3n"]
+
+[node name="inuput_remap" type="Control" unique_id=800974976]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2pf3n")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2122407678]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1537545849]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer/VBoxContainer" unique_id=1467783522]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+tab_0/title = "Keyboard"
+tab_1/title = "Joystick"
+
+[node name="keyboard" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=804196729]
+layout_mode = 2
+metadata/_tab_index = 0
+metadata/_tab_name = "Keyboard"
+
+[node name="all_inputs_k" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/keyboard" unique_id=445802088]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="joystick" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer" unique_id=1411160524]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+metadata/_tab_name = "Joystick"
+
+[node name="all_inputs_c" type="VBoxContainer" parent="PanelContainer/VBoxContainer/TabContainer/joystick" unique_id=622868610]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=160546950]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="save" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1374775752]
+layout_mode = 2
+text = "Save"
+
+[node name="reset" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1187999248]
+layout_mode = 2
+text = "Reset"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/reset" to="." method="_on_reset_pressed"]

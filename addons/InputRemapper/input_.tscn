@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bfxarj13mbwjb"]
+
+[ext_resource type="Script" uid="uid://ci2vlghf6kk10" path="res://addons/InputRemapper/input_.gd" id="1_ekmld"]
+
+[node name="input_" type="HBoxContainer" unique_id=1765252577]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+script = ExtResource("1_ekmld")
+
+[node name="action" type="Label" parent="." unique_id=1288722664]
+unique_name_in_owner = true
+layout_mode = 2
+text = "action"
+vertical_alignment = 1
+
+[node name="button" type="Button" parent="." unique_id=483705056]
+unique_name_in_owner = true
+layout_mode = 2
+text = "action"

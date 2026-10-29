@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://go1rr4uo3qkn"]
+
+[ext_resource type="Script" uid="uid://b8hpc7yt7os74" path="res://addons/InputRemapper/demo/movment.gd" id="1_75spp"]
+[ext_resource type="Texture2D" uid="uid://dwk630lqtr0d8" path="res://addons/InputRemapper/demo/icon.svg" id="1_iuo0a"]
+[ext_resource type="PackedScene" uid="uid://k5hv1cqpwwyh" path="res://addons/InputRemapper/inuput_remap.tscn" id="3_tjukh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjukh"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.42745098)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jx0b"]
+size = Vector2(114, 124)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0jx0b"]
+
+[node name="Demo" type="Node2D" unique_id=1101249906]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=853468194]
+custom_minimum_size = Vector2(500, 200)
+custom_maximum_size = Vector2(-1, 200)
+offset_left = 302.0
+offset_top = 161.00002
+offset_right = 802.0
+offset_bottom = 361.0
+scale = Vector2(0.98, 0.9968067)
+theme_override_styles/normal = SubResource("StyleBoxFlat_tjukh")
+text = "To run this demo:
+	go to: Project ->  Project Setting -> Input Map 
+	Map the inputs as follow
+	Action name  | Key Name
+	left                   | pick any key
+	right                | pick any key
+	jump               | pick any key"
+fit_content = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1657357337]
+position = Vector2(543, 253)
+script = ExtResource("1_75spp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1840754150]
+texture = ExtResource("1_iuo0a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1701013543]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_0jx0b")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1643364800]
+position = Vector2(551, 584)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1672450090]
+shape = SubResource("WorldBoundaryShape2D_0jx0b")
+
+[node name="Button" type="Button" parent="." unique_id=1117124227]
+offset_left = 43.0
+offset_top = 77.0
+offset_right = 226.0
+offset_bottom = 108.0
+text = "open remaping setting
+"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2033485884]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=106874122]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="close" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=270391137]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "close"
+
+[node name="inuput_remap" parent="CanvasLayer/VBoxContainer" unique_id=800974976 instance=ExtResource("3_tjukh")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="Button" to="CharacterBody2D" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/close" to="CharacterBody2D" method="_on_close_pressed"]
